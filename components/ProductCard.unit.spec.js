@@ -13,24 +13,18 @@ describe('ProductCard', () => {
     server.shutdown();
   });
 
-  it('should mount the component', () => {
+  it('should mount the component and match snapshot', () => {
     const wrapper = mount(ProductCard, {
       propsData: {
-        product: server.create('product'),
+        product: server.create('product', {
+          title: 'Product Title',
+          price: 22,
+          image:
+            'https://images.unsplash.com/photo-1524592094714-0f0654e20314?ixlib=rb-1.2.1&auto=format&fit=crop&w=689&q=80',
+        }),
       },
     });
 
-    expect(wrapper.vm).toBeDefined();
-  });
-
-  it('should text() contains the product title and price', () => {
-    const product = server.create('product');
-
-    const wrapper = mount(ProductCard, {
-      propsData: { product },
-    });
-
-    expect(wrapper.text()).toContain(product.title);
-    expect(wrapper.text()).toContain(`$ ${product.price}`);
+    expect(wrapper.vm).toMatchSnapshot();
   });
 });
