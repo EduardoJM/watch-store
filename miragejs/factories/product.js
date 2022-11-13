@@ -24,10 +24,10 @@ const images = [
 export default {
   product: Factory.extend({
     title() {
-      return faker.fake('{{lorem.words}}');
+      return faker.lorem.words();
     },
     price() {
-      return faker.fake('{{commerce.price}}');
+      return faker.commerce.price();
     },
     image() {
       return images[randomNumber(10)];
