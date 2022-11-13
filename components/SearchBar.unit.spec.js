@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import SearchBar from './SearchBar';
+import SearchBar from '@/components/SearchBar';
 
 describe('SearchBar', () => {
   it('should mount the component', () => {
