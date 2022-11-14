@@ -38,6 +38,12 @@ describe('ShoppingCart', () => {
     expect(wrapper.text()).toContain(`$ ${product.price}`);
   });
 
+  it('should display the product image', () => {
+    const { wrapper, product } = mountCartItem();
+
+    expect(wrapper.find('img').attributes('src')).toEqual(product.image);
+  });
+
   it('should display quantity 1 when product is first displayed', () => {
     const { wrapper } = mountCartItem();
 
