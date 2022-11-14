@@ -1,10 +1,11 @@
 import { mount } from '@vue/test-utils';
 import ProductCard from '@/components/ProductCard';
 import { makeServer } from '@/miragejs/server';
-import { cartState } from '@/state';
+import { CartManager } from '@/managers/CartManager';
 
 describe('ProductCard', () => {
   let server;
+  let manager;
 
   const mountProductCard = () => {
     const product = server.create('product', {
@@ -15,16 +16,21 @@ describe('ProductCard', () => {
     });
     const wrapper = mount(ProductCard, {
       propsData: { product },
+      mocks: {
+        $cart: manager,
+      },
     });
     return { product, wrapper };
   };
 
   beforeEach(() => {
+    manager = new CartManager();
     server = makeServer({ environment: 'test' });
   });
 
   afterEach(() => {
     server.shutdown();
+    manager.clearCart();
   });
 
   it('should mount the component and match snapshot', () => {
@@ -39,8 +45,10 @@ describe('ProductCard', () => {
     const button = wrapper.find('button');
     await button.trigger('click');
 
-    expect(cartState.items).toHaveLength(1);
-    expect(cartState.items[0]).toMatchObject(product);
+    expect(manager.getState()).toMatchObject({
+      open: true,
+      items: [product],
+    });
   });
 
   it.todo('should ensure product is not added to the cart twice');
