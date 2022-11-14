@@ -124,4 +124,28 @@ describe('ProductList - integration', () => {
 
     expect(wrapper.findAllComponents(ProductCard)).toHaveLength(11);
   });
+
+  it('should display the total quantity of products', async () => {
+    const { wrapper } = await mountProductList([], 40);
+
+    const quantityLabel = wrapper.find('[aria-label="products count"]');
+
+    expect(quantityLabel.text()).toEqual(`40 Products`);
+  });
+
+  it('should display product (singular) when total is only 1 product', async () => {
+    const { wrapper } = await mountProductList([], 1);
+
+    const quantityLabel = wrapper.find('[aria-label="products count"]');
+
+    expect(quantityLabel.text()).toEqual(`1 Product`);
+  });
+
+  it('should display none product when total has 0 products', async () => {
+    const { wrapper } = await mountProductList([], 0);
+
+    const quantityLabel = wrapper.find('[aria-label="products count"]');
+
+    expect(quantityLabel.text()).toEqual(`None Product Found`);
+  });
 });
