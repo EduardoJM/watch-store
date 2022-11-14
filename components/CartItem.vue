@@ -4,6 +4,7 @@
       <img class="h-20 w-20 object-cover rounded" :src="product.image" alt="" />
       <div class="mx-3">
         <h3 class="text-sm text-gray-600">{{ product.title }}</h3>
+        <button data-testid="remove-button" @click="remove">remover</button>
         <div class="flex items-center mt-2">
           <button
             class="text-gray-500 focus:outline-none focus:text-gray-600"
@@ -74,6 +75,9 @@ export default {
         return;
       }
       this.quantity -= 1;
+    },
+    remove() {
+      this.$cart.removeProduct(this.product.id);
     },
   },
 };
