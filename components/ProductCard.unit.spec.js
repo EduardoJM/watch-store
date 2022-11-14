@@ -50,6 +50,4 @@ describe('ProductCard', () => {
       items: [product],
     });
   });
-
-  it.todo('should ensure product is not added to the cart twice');
 });

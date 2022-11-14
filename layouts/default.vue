@@ -33,6 +33,7 @@
           <div class="flex items-center justify-end w-full">
             <button
               class="text-gray-600 focus:outline-none mx-4 sm:mx-0"
+              aria-label="Toggle cart"
               @click="toggleCart"
             >
               <svg
