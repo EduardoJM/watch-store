@@ -12,13 +12,6 @@ context('Store', () => {
     server.shutdown();
   });
 
-  it('should display the store', () => {
-    cy.visit('/');
-
-    cy.get('body').contains('Brand');
-    cy.get('body').contains('Wrist Watch');
-  });
-
   context('Store > Product List', () => {
     it('should display "None Product Found" when no product is returned', () => {
       cy.visit('/');
