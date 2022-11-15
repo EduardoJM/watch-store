@@ -90,4 +90,20 @@ describe('ShoppingCart', () => {
 
     expect(spy).toHaveBeenCalledTimes(1);
   });
+
+  it('should display empty cart button when there are products', () => {
+    const { wrapper } = mountShoppingCart(1);
+
+    const button = wrapper.find('[data-testid="clear-button"]');
+
+    expect(button.exists()).toEqual(true);
+  });
+
+  it('should not display empty cart button when there are not products', () => {
+    const { wrapper } = mountShoppingCart(0);
+
+    const button = wrapper.find('[data-testid="clear-button"]');
+
+    expect(button.exists()).toEqual(false);
+  });
 });
