@@ -1,10 +1,13 @@
 import { createServer, Response } from 'miragejs';
 
-if (process.env.NODE_ENV === 'development') {
+if (
+  process.env.NODE_ENV === 'development' ||
+  process.env.DEPLOY === 'github-actions'
+) {
   require('@/miragejs/server').makeServer();
 }
 
-if (window.Cypress) {
+if (window?.Cypress) {
   // If your app makes requests to domains other than / (the current domain), add them
   // here so that they are also proxied from your app to the handleFromCypress function.
   // For example: let otherDomains = ["https://my-backend.herokuapp.com/"]
