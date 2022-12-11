@@ -1,11 +1,6 @@
 import { createServer, Response } from 'miragejs';
 
-if (
-  process.env.NODE_ENV === 'development' ||
-  process.env.DEPLOY === 'github-actions'
-) {
-  require('@/miragejs/server').makeServer();
-}
+require('@/miragejs/server').makeServer();
 
 if (!!window && window.Cypress) {
   // If your app makes requests to domains other than / (the current domain), add them
