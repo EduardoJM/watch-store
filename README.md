@@ -15,4 +15,49 @@
     <img src="./.github/images/print.png" alt="Watch Store Screen" />
 </p>
 
+<p align="center">
+    A version of that aplication is hosted into the GitHub Pages with MirageJS serving the API endpoints: <a href="https://eduardojm.github.io/watch-store/" target="_blank">click here to visit</a>.
+</p>
+
 ---
+
+## How to Run Locally
+
+### 1. Clone the Repository
+
+```sh
+https://github.com/EduardoJM/watch-store.git
+cd watch-store
+```
+
+### 2. Install the dependencies
+
+```sh
+yarn
+```
+
+### 3. Run the development version
+
+```sh
+yarn dev
+```
+
+## How to run tests
+
+### With Jest
+
+```sh
+yarn test
+```
+
+#### In watch mode
+
+```sh
+yarn test:watch
+```
+
+#### With code coverage
+
+```sh
+yarn test:coverage
+```
