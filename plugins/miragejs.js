@@ -7,7 +7,7 @@ if (
   require('@/miragejs/server').makeServer();
 }
 
-if (window?.Cypress) {
+if (!!window && window.Cypress) {
   // If your app makes requests to domains other than / (the current domain), add them
   // here so that they are also proxied from your app to the handleFromCypress function.
   // For example: let otherDomains = ["https://my-backend.herokuapp.com/"]
