@@ -10,3 +10,9 @@
 </p>
 
 ---
+
+<p align="center">
+    <img src="./.github/images/print.png" alt="Watch Store Screen" />
+</p>
+
+---
