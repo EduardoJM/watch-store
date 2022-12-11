@@ -61,3 +61,28 @@ yarn test:watch
 ```sh
 yarn test:coverage
 ```
+
+### With Cypress
+
+```sh
+yarn test:e2e
+```
+
+The `test:e2e` script run the dev application and the cypress, then is not needed to start the application before running the `yarn test:e2e`.
+
+---
+
+## About the CI/CD Workflows
+
+We have two basic workflows for tests:
+
+- **tests.yml**: executes the `yarn test:coverage` on pull request and push to main and send the coverage data to coveralls.
+- **e2e-tests.yml**: run the end-to-end tests with **cypress**.
+
+We have, too, a workflow to deploy:
+
+- **deploy.yml**: executes the `yarn generate` and deploy the generated application to GitHub Pages.
+
+And, the last workflow, is an workflow to made automerge of the dependabot pull requests (inspired by the [@sibelius](https://github.com/sibelius)):
+
+- **automerge.yml**: if all verifications of the workflow is parsed, then the dependabot made automerge of the pull request.
